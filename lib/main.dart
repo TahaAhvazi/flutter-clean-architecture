@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_json_clean/features/posts/data/data_source/remote/get_posts_api.dart';
-import 'package:flutter_json_clean/features/posts/data/repository/posts_repository.dart';
-import 'package:flutter_json_clean/features/posts/domain/usecase/usecase.dart';
 import 'package:flutter_json_clean/features/posts/presentation/pages/home.dart';
 import 'package:flutter_json_clean/injection_container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PostsBloc>(
-      create: (context) => PostsBloc(GetPostsUseCase(
-          postsRepository:
-              PostsRepositoryImp(postApiService: PostApiService())))
-        ..add(OnPostGetEvent()),
+      create: (context) => di()..add(OnPostGetEvent()),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

@@ -13,7 +13,6 @@ class PostsRepositoryImp implements PostsRepository {
   Future<DataState<List<PostsEntities>>> getPosts() async {
     try {
       final result = await _postApiService.fetchPosts();
-      print("RESUUUUUUUUUUUUUULT :$result");
       if (result.isNotEmpty) {
         return DataSuccess(result);
       }

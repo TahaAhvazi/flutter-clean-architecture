@@ -12,7 +12,6 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
   final GetPostsUseCase _getPostsUseCase;
   PostsBloc(this._getPostsUseCase) : super(PostsLoadingState()) {
     on<OnPostGetEvent>((event, emit) async {
-      print("--------------------💙💙💙💙");
       final dataState = await _getPostsUseCase();
       if (dataState is DataSuccess && dataState.data!.isNotEmpty) {
         emit(PostsLoadedSuccessfulState(dataState.data!));
@@ -20,7 +19,6 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
       if (dataState is DataFailed) {
         emit(PostLoadingFailedState(dataState.error!));
       }
-      print(state);
     });
   }
 }
