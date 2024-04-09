@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class UsersApiService {
   Future<List<UsersModel>> fetchUsers() async {
-    final response = await http.get(Uri.parse(url));
+    final response = await http.get(Uri.parse(urlUsers));
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
       return jsonData.map((e) => UsersModel.fromJson(e)).toList();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_json_clean/features/posts/presentation/bloc/posts/posts_bloc.dart';
+import 'package:flutter_json_clean/features/users/presentation/pages/userpages.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,9 +25,18 @@ class HomePage extends StatelessWidget {
             return ListView.builder(
               itemCount: state.posts!.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    state.posts![index].title,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const UsersPage(),
+                      ),
+                    );
+                  },
+                  child: ListTile(
+                    title: Text(
+                      state.posts![index].title,
+                    ),
                   ),
                 );
               },

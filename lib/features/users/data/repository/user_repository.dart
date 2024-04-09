@@ -18,9 +18,7 @@ class UserRepositoryImp implements UsersRepository {
         return DataSuccess(result);
       } else {
         return DataFailed(
-          ClientException(
-            "IDFK :)",
-          ),
+          ClientException("IDFK :)"),
         );
       }
     } on ClientException catch (fuckingException) {
